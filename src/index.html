@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Tarefas</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>TO-DO LIST</h1>
+    
+    <main>
+
+        <div id="taskBox">
+            <h2>CRIAR TAREFA</h2>
+            <span>Task:</span>
+            <input type="text" id="taskName" placeholder="Nome da Tarefa..." >
+
+            <span>Responsável:</span>
+            <input type="text" id="resp" placeholder="Nome do Responsável">
+
+             <button>SALVAR</button>
+            <!-- <div class="botoes">
+                <a href="#taskList">LISTA DE TAREFAS</a>
+            </div>         -->
+
+        </div>
+        
+        <div id="taskList">
+            <h2>LISTA DE TAREFAS</h2>
+            <table id="table" >
+                <thead>
+                    <tr>
+                        <th id="do"></th>
+                        <th>Tarefa</th>
+                        <th>Responsável</th>
+                        <th>...</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!-- TYPESCRIPT-->
+                </tbody>
+
+            </table>
+            
+            
+        </div>
+        
+    </main>
+   <script src="./../build/index.js"></script>
+</body>
+</html>
