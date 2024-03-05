@@ -2,7 +2,7 @@
 let taskName = document.querySelector("#taskName") as HTMLInputElement;
 let resp = document.querySelector("#resp") as HTMLInputElement;
 
-let table = document.getElementById("#table") as HTMLTableElement;
+let table = document.getElementById(".table table-dark table-striped") as HTMLTableElement;
 let tbody = document.querySelector("#tbody") as HTMLTableSectionElement;
 let button = document.querySelector("#taskBox button") as HTMLElement;
 
@@ -23,23 +23,16 @@ let button = document.querySelector("#taskBox button") as HTMLElement;
     let tarefas: Tarefa[]  = listaSalva!==null && JSON.parse(listaSalva) || []; 
   
     
-    function checkDo(pos:number):boolean{
-        
+    function checkDo(pos: number): boolean {
+        const check = document.querySelector(`#task${pos}`) as HTMLInputElement;
         tarefas[pos].status = !tarefas[pos].status;
 
-            if(tarefas[pos].status){
-                alert("entrou");
-                listar();
-                saveData();
-               return true ;
-            }else{
-                alert("saiu");
-                listar();
-                saveData();
-                return false;
-            }
+        check.checked = tarefas[pos].status;
         
+        saveData();
+        return check.checked
     }
+    
     
      
     
@@ -56,8 +49,13 @@ let button = document.querySelector("#taskBox button") as HTMLElement;
             tdCheck.setAttribute("style","width: 5px;border:none");
             const check = document.createElement("input");
             check.setAttribute("type","checkbox");
+            check.setAttribute("id", `task${tarefas.indexOf(item)}`)
             check.setAttribute("onchange", `checkDo(${tarefas.indexOf(item)})`);
             check.setAttribute("style", "width: 8vh");
+            if(item.status){
+                check.checked = true
+            }
+        //    saveData();
             tdCheck.appendChild(check);
 
             const tdTask = document.createElement("td");

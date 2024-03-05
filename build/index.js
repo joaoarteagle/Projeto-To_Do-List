@@ -1,7 +1,7 @@
 "use strict";
 let taskName = document.querySelector("#taskName");
 let resp = document.querySelector("#resp");
-let table = document.getElementById("#table");
+let table = document.getElementById(".table table-dark table-striped");
 let tbody = document.querySelector("#tbody");
 let button = document.querySelector("#taskBox button");
 class Tarefa {
@@ -14,19 +14,11 @@ class Tarefa {
 let listaSalva = localStorage.getItem("@listagem_task");
 let tarefas = listaSalva !== null && JSON.parse(listaSalva) || [];
 function checkDo(pos) {
+    const check = document.querySelector(`#task${pos}`);
     tarefas[pos].status = !tarefas[pos].status;
-    if (tarefas[pos].status) {
-        alert("entrou");
-        listar();
-        saveData();
-        return true;
-    }
-    else {
-        alert("saiu");
-        listar();
-        saveData();
-        return false;
-    }
+    check.checked = tarefas[pos].status;
+    saveData();
+    return check.checked;
 }
 function listar() {
     //limpar o corpo da tabela
@@ -37,8 +29,13 @@ function listar() {
         tdCheck.setAttribute("style", "width: 5px;border:none");
         const check = document.createElement("input");
         check.setAttribute("type", "checkbox");
+        check.setAttribute("id", `task${tarefas.indexOf(item)}`);
         check.setAttribute("onchange", `checkDo(${tarefas.indexOf(item)})`);
         check.setAttribute("style", "width: 8vh");
+        if (item.status) {
+            check.checked = true;
+        }
+        //    saveData();
         tdCheck.appendChild(check);
         const tdTask = document.createElement("td");
         tdTask.textContent = item.name;
