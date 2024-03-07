@@ -9,21 +9,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+   <style>
+    .modal{
+        display: none; /* Ocultar modal por padrão */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);  /*fundo escuro semi-transparente */
+    }
+
+   
+  
+   </style>
 </head>
 <body>
-<h1>TO-DO LIST</h1>
+    <h1 style="color: aliceblue;">Lista de Tarefas <img src="./img/2029830.png" alt="" style="width: 8vh; filter: invert(1); margin-left: 10px;"></h1>
     
     <main>
 
-        <div id="taskBox">
-            <h2>CRIAR TAREFA</h2>
-            <span>Task:</span>
-            <input type="text" id="taskName" class="form-control" placeholder="Nome da Tarefa..." >
+        <div id="taskBox" class="modal" tabindex="-1" style="display:none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">NEW TASK</h5>
+                        <button id="closeBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-            <span>Responsável:</span>
-            <input type="text" id="resp" class="form-control" placeholder="Nome do Responsável">
+                    <div class="modal-body">
+                        <span>Task:</span>
+                        <input type="text" id="taskName" class="form-control" placeholder="Nome da Tarefa..." >
 
-             <button class="btn btn-primary" style="margin-top: 5vh;">SALVAR</button>
+                        <span>Responsável:</span>
+                        <input type="text" id="resp" class="form-control" placeholder="Nome do Responsável">
+                    </div>
+
+                    <div class="modal-footer">
+                        
+                        <button id="salvar" class="btn btn-primary">SALVAR</button>
+                    </div>
+                </div>
+             </div>
             <!-- <div class="botoes">
                 <a href="#taskList">LISTA DE TAREFAS</a>
             </div>         -->
@@ -31,7 +61,11 @@
         </div>
         
         <div id="taskList">
-            <h2>LISTA DE TAREFAS</h2>
+            <div id="titleTask">
+            <h2>TAREFAS</h2>
+            </div>
+            
+           <!--<div id="divTbody"> --> 
             <table class="table">
                 <thead>
                     <tr>
@@ -41,14 +75,16 @@
                         <th>...</th>
                     </tr>
                 </thead>
-                <tbody id="tbody">
-                    <!-- TYPESCRIPT-->
-                </tbody>
 
+                    <tbody id="tbody">
+                        <!-- TYPESCRIPT-->
+                    </tbody>
+                </div>
             </table>
+        
             
-            
-        </div>
+        <!-- </div> -->
+        <button id="newBtn" class="btn btn-primary" style="margin-top: 5vh;">Nova Atividade</button>
         
     </main>
    <script src="./../build/index.js"></script>
