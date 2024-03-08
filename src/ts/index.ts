@@ -26,6 +26,7 @@ class Tarefa{
 }
 
 
+
       
     let listaSalva:(string|null) = localStorage.getItem("@listagem_task");
     let tarefas: Tarefa[]  = listaSalva!==null && JSON.parse(listaSalva) || []; 
@@ -54,7 +55,6 @@ class Tarefa{
         check.checked = tarefas[pos].status;
         
         saveData();
-        alert("Parabens!!! Tarefa concluida")
         return check.checked
     }
     //fim função
@@ -86,7 +86,11 @@ class Tarefa{
             tdCheck.appendChild(check);//adciona o checkbox na coluna
             //=================================================
             const tdTask = document.createElement("td");//linha do nome das tasks
-            tdTask.textContent = item.name;
+            const aName = document.createElement("a");
+            aName.setAttribute("href", "descricao.html");
+            aName.setAttribute("style"," display: flex; align-items: start;justify-content: left; text-decoration:none; font-weight: bold; ")
+            aName.textContent = item.name;
+            tdTask.appendChild(aName);
             //=================================================
             const tdResp = document.createElement("td");//linha de responsavel
             tdResp.textContent = item.resp;
@@ -97,7 +101,8 @@ class Tarefa{
             linkElement.setAttribute("onclick", `deletar(${ tarefas.indexOf(item)})`);
             
             const lixeira = document.createElement("img");
-            lixeira.setAttribute("src", "./img/lixeira.png")
+            lixeira.setAttribute("src", ".././img/lixeira.png");
+            lixeira.setAttribute("alt","teste");
             linkElement.appendChild(lixeira);
             tdA.appendChild(linkElement);
 
@@ -120,7 +125,8 @@ class Tarefa{
         tarefas.splice(pos, 1);
         listar();
         saveData();
-        alert("Deletado com sucesso!")
+        alert("Deletado com sucesso!");
+        
     }
 
     
@@ -130,7 +136,7 @@ class Tarefa{
             alert("Campo não Pode estar vazio!");
             return false;
         }else{
-
+                console.log("entrou")
             let task1 = new Tarefa(taskName.value, resp.value, false);
                 
 
