@@ -34,7 +34,7 @@ class Tarefa{
     let tarefas: Tarefa[]  = listaSalva!==null && JSON.parse(listaSalva) || []; 
   
 
-    
+
     //======funções do modal=======
     function OpenModal(){
         console.log("teste")
@@ -91,7 +91,7 @@ class Tarefa{
             //=================================================
             const tdTask = document.createElement("td");//linha do nome das tasks
             const aName = document.createElement("a");
-            aName.setAttribute("href", "descricao.html");
+            aName.setAttribute("href", "descricao.html"); // funcionalidade ainda não incluida
             aName.setAttribute("style"," display: flex; align-items: start;justify-content: left; text-decoration:none; font-weight: bold; ")
             aName.textContent = item.name;
             tdTask.appendChild(aName);
@@ -131,7 +131,7 @@ class Tarefa{
         tarefas.splice(pos, 1);
         listar();
         saveData();
-        alert("Deletado com sucesso!");
+       // alert("Deletado com sucesso!");
         
     }
 

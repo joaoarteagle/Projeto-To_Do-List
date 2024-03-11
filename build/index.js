@@ -77,7 +77,6 @@ function deletar(pos) {
     tarefas.splice(pos, 1);
     listar();
     saveData();
-    alert("Deletado com sucesso!");
 }
 function add() {
     console.log("Função");
