@@ -1,6 +1,6 @@
 
 
-
+//retirando os elementos do html.
 let taskName = document.querySelector("#taskName") as HTMLInputElement;
 let resp = document.querySelector("#resp") as HTMLInputElement;
 
@@ -11,7 +11,9 @@ let button = document.querySelector("#salvar") as HTMLElement;
 const myModal = document.querySelector("#taskBox") as HTMLElement;
 const modalBtn = document.querySelector("#newBtn") as HTMLButtonElement;
 const closeBtn = document.querySelector("#closeBtn") as HTMLButtonElement;
+//fim declarações
 
+//criação de uma classe tarefa
 class Tarefa{
     name: string;
     resp:string;
@@ -24,13 +26,15 @@ class Tarefa{
     }
     
 }
+//=========================================================================
 
 
-
-      
+      //criando a local storage e inserindo os dados na lista
     let listaSalva:(string|null) = localStorage.getItem("@listagem_task");
     let tarefas: Tarefa[]  = listaSalva!==null && JSON.parse(listaSalva) || []; 
   
+
+    
     //======funções do modal=======
     function OpenModal(){
         console.log("teste")
@@ -105,17 +109,19 @@ class Tarefa{
             lixeira.setAttribute("alt","teste");
             linkElement.appendChild(lixeira);
             tdA.appendChild(linkElement);
-
+            //===================================================
+            //adicionando as colunas dentro da linha
             tr.appendChild(tdCheck);
             tr.appendChild(tdTask);
             tr.appendChild(tdResp);
             tr.appendChild(tdA);
-
+            //===================================================
+            //adicionando a linha ao body da table
             tbody.appendChild(tr);
             
             
             
-        });
+        });//fim do forEach
         
     };
     
@@ -137,10 +143,10 @@ class Tarefa{
             return false;
         }else{
                 console.log("entrou")
-            let task1 = new Tarefa(taskName.value, resp.value, false);
+            let task1 = new Tarefa(taskName.value, resp.value, false);//passa os valores para a variavel
                 
 
-            tarefas.push(task1);
+            tarefas.push(task1);//inserindo na array
 
             taskName.value = "";
             resp.value = "";
@@ -159,5 +165,5 @@ class Tarefa{
 
 
   function saveData(){
-    localStorage.setItem("@listagem_task", JSON.stringify(tarefas));
+    localStorage.setItem("@listagem_task", JSON.stringify(tarefas));//salva os itens dentro do storage
   };
