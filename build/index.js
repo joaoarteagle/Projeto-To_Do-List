@@ -4,6 +4,7 @@ let quantidadeInput = document.querySelector("#qntd");
 let table = document.getElementById(".table table-dark table-striped");
 let tbody = document.querySelector("#tbody");
 let button = document.querySelector("#salvar");
+let sendList = document.querySelector("#share");
 const myModal = document.querySelector("#taskBox");
 const modalBtn = document.querySelector("#newBtn");
 const closeBtn = document.querySelector("#closeBtn");
@@ -97,3 +98,11 @@ function saveData() {
     localStorage.setItem("@listagem_produto", JSON.stringify(produtos));
 }
 ;
+function sendMessage() {
+    let message = "https://wa.me/5544998006615?text=Lista%20de%20Mercadoria%3A%0A";
+    produtos.forEach((item) => {
+        message += `*%20${item.name}%3A%20${item.quantidade}%20unidades%0A`;
+    });
+    window.open(message);
+}
+sendList.onclick = sendMessage;
