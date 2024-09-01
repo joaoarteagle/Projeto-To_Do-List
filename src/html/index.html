@@ -10,61 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-   <style>
-    .modal{
-        display: none; /* Ocultar modal por padrão */
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 200%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);  /*fundo escuro semi-transparente */
-    }
-
-   
   
-   </style>
 </head>
 <body>
-    <h1 style="color: aliceblue;">Lista de Tarefas <img src="./img/2029830.png" alt="" style="width: 8vh; filter: invert(1); margin-left: 10px;"></h1>
+    <h1 style="color: aliceblue;">Lista de Produtos</h1>
     
     <main>
+       
 
-        <div id="taskBox" class="modal" tabindex="-1" style="display:none;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">NEW TASK</h5>
-                        <button id="closeBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <span>Task:</span>
-                        <input type="text" id="taskName" class="form-control" placeholder="Nome da Tarefa..." >
-
-                        <span>Responsável:</span>
-                        <input type="text" id="resp" class="form-control" placeholder="Nome do Responsável">
-                    </div>
-
-                    <div class="modal-footer">
-                        
-                        <button id="salvar" class="btn btn-primary">SALVAR</button>
-                    </div>
-                </div>
-             </div>
-            <!-- <div class="botoes">
-                <a href="#taskList">LISTA DE TAREFAS</a>
-            </div>         -->
-
-        </div>
-
-        
         
         <div id="taskList">
             <div id="titleTask">
-            <h2>TAREFAS</h2>
+            <h2>Produtos</h2>
             </div>
             
            <!--<div id="divTbody"> --> 
@@ -72,8 +29,8 @@
                 <thead>
                     <tr>
                         <th id="do"></th>
-                        <th>Tarefa</th>
-                        <th>Responsável</th>
+                        <th>Produtos</th>
+                        <th>Quantidade</th>
                         <th>...</th>
                     </tr>
                 </thead>
@@ -83,16 +40,47 @@
                     </tbody>
                 </div>
             </table>
-            <button id="newBtn" class="btn btn-primary" style="margin-top: 5vh;">Nova Atividade</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#taskBox" >Novo Produto</button>
          
             
         </div>
+       
 
         <div id="multitasking">
 
             <img src="./../img/Multitasking.gif" alt="giphy" style="width: 80vh; margin-left: 20vh; " >
         </div>
+
+
+        <div id="taskBox" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">NEW PRODUCT</h5>
+                        <button id="closeBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+    
+                    <div class="modal-body">
+                        <span>Produto:</span>
+                        <input type="text" id="ProName" class="form-control" placeholder="Nome do Produto..." >
+    
+                        <span>Quantidade:</span>
+                        <input type="number" id="qntd" class="form-control" placeholder="Quantidade:">
+                    </div>
+    
+                    <div class="modal-footer">
+                        
+                        <button id="salvar" class="btn btn-primary" data-bs-dismiss="modal">SALVAR</button>
+                    </div>
+                </div>
+             </div>
+            <!-- <div class="botoes">
+                <a href="#taskList">LISTA DE TAREFAS</a>
+            </div>         -->
+    
+        </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    <script src="./../../build/index.js"></script>
 </body>
 </html>
