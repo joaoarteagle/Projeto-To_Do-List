@@ -29,6 +29,7 @@ class Tarefa{
 //=========================================================================
 
 
+
       //criando a local storage e inserindo os dados na lista
     let listaSalva:(string|null) = localStorage.getItem("@listagem_task");
     let tarefas: Tarefa[]  = listaSalva!==null && JSON.parse(listaSalva) || []; 
